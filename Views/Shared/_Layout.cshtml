@@ -1,0 +1,58 @@
+﻿@model PageData
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I Ching</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    <div id="sidenavbutton" onclick="shownav()"></div>
+    <div id="sidenav">
+        <div class="sidenavmenuitem header">About</div>
+        <div class="sidenavmenuitem clickable"><a navlink href="/home/page?pageToDisplay=Tao">The Tao</a></div>
+        <div class="sidenavmenuitem clickable"><a navlink href="/home/page?pageToDisplay=IChing">I Ching</a></div>
+        <div class="sidenavmenuitem header">Trigrams</div>
+        <div class="sidenavmenuitem clickable"><a navlink href="/home/page?pageToDisplay=Earth">Earth</a></div>
+        <div class="sidenavmenuitem clickable"><a navlink href="/home/page?pageToDisplay=Mountain">Mountain</a></div>
+        <div class="sidenavmenuitem clickable"><a navlink href="/home/page?pageToDisplay=Water">Water</a></div>
+        <div class="sidenavmenuitem clickable"><a navlink href="/home/page?pageToDisplay=Wind">Wind</a></div>
+        <div class="sidenavmenuitem clickable"><a navlink href="/home/page?pageToDisplay=Thunder">Thunder</a></div>
+        <div class="sidenavmenuitem clickable"><a navlink href="/home/page?pageToDisplay=Fire">Fire</a></div>
+        <div class="sidenavmenuitem clickable"><a navlink href="/home/page?pageToDisplay=Lake">Lake</a></div>
+        <div class="sidenavmenuitem clickable"><a navlink href="/home/page?pageToDisplay=Heaven">Heaven</a></div>
+        <div class="sidenavmenuitem header">Hexagrams</div>
+        <div class="sidenavmenuitem clickable"><a navlink href="/home/hexagram?upper=0;lower=0">First</a></div>
+        <div class="sidenavmenuitem clickable random"><a navlink onclick="goRandom()">Random</a></div>
+        <div class="sidenavmenuitem header clickable" onclick="hidenav()">Hide Menu</div>
+    </div>
+    <div class="nextbutton"><a navlink href="/home/hexagram?@Model.PathToNext">›</a></div>
+    <div id="randombutton" onclick="goRandom()"></div>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <script src="~/js/site.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
+<script>
+    // Here so the random URL is generated and used each time the page updates
+    var upper = Math.floor(Math.random() * 8);
+    var lower = Math.floor(Math.random() * 8);
+    var randomUrl = "/home/hexagram?upper=" + upper + "&lower=" + lower;
+    function goRandom() {
+        location.href=randomUrl;
+    }
+    // Here because they're the only global js functions
+    function hidenav() {
+    document.getElementById("sidenav").style.width = "0px";
+    }
+    function shownav() {
+        document.getElementById("sidenav").style.width = "150px";
+    }
+</script>

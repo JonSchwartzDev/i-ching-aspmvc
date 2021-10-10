@@ -1,0 +1,16 @@
+﻿@model PageData
+
+<div class="col-2 StaticPageImage Trigrams @Model.Upper"></div>
+<div class="h2 col-2">@Model.Upper</div>
+<div class="col-2 StaticPageImage Trigrams @Model.Lower"></div>
+<div class="h2 col-2">@Model.Lower</div>
+<div class="h2 col-2">@Model.Name</div>
+@foreach (string line in @Model.Summary)
+{
+    <div class="spacedline col-2">@line</div>
+}
+<div class="h2 col-2">Image</div>
+@foreach (string line in @Model.Image)
+{
+    <div class="spacedline col-2">@line</div>
+}
