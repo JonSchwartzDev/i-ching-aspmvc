@@ -9,5 +9,7 @@ This ASP MVC version uses server round trips - it is not a SPA - but is otherwis
 
 There's also a React SPA version at https://github.com/JonSchwartzDev/i-ching-react 
 
+Deploy size differences: Mithril 220K, React Webpack 800K, ASP MVC 1200K.
+
 Comparison of code for the three versions, with the UI they implement:
 ![Comparison of code for the three versions, with the UI they implement](https://github.com/JonSchwartzDev/i-ching-mithril/blob/master/iChing%20hexagram%20in%20three%20versions.png)
